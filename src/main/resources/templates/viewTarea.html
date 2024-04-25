@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <h1 class="text-center m-5">Lista de tareas</h1>
+        <div class="container d-flex flex-column justify-content-center">
+            <a href="/from" class="btn btn-warning fw-bold m-3 align-self ">Crear nueva tarea</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>titulo</th>
+                        <th>descripcion</th>
+                        <th>estado</th>
+                        <th>fecha</th>
+                        <th>hora</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="tarea: ${listTareas}">
+                        <td th:text="${tarea.id}"></td>
+                        <td th:text="${tarea.titulo}"></td>
+                        <td th:text="${tarea.descripcion}"></td>
+                        <td th:text="${tarea.estado}"></td>
+                        <td th:text="${tarea.fecha}"></td>
+                        <td th:text="${tarea.hora}"></td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a th:href="@{/update/{id}(id=${tarea.id})}" class="btn btn-primary">Editar</a>
+                                <a th:href="@{/delete/{id}(id=${tarea.id})}" class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
